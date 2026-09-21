@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FREE FIRE ACADEMY — Train Hard. Play Smart. Become Elite.</title>
+<meta name="description" content="Free Fire Academy is a premium esports coaching institute for structured training, strategy development, gameplay analysis and competitive preparation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+tailwind.config={
+  theme:{
+    extend:{
+      fontFamily:{
+        display:['Orbitron','sans-serif'],
+        raj:['Rajdhani','sans-serif'],
+        body:['Inter','sans-serif'],
+        mono:['JetBrains Mono','monospace']
+      },
+      colors:{
+        brand:'#FF3B1F',
+        brand2:'#FF6A00',
+        gold:'#E8B86A'
+      }
+    }
+  }
+}
+</script>
+<style>
+*{scroll-behavior:smooth}
+body{background:#05070A;color:#E6E8EC;font-family:'Inter',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#0a0a0a}
+::-webkit-scrollbar-thumb{background:#FF3B1F;border-radius:10px}
+::selection{background:#FF3B1F;color:white}
+.glass{background:rgba(255,255,255,0.04);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.07)}
+.glass-strong{background:rgba(16,18,22,0.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.08)}
+.text-gradient{background:linear-gradient(90deg,#FF3B1F 0%,#FF6A00 50%,#E8B86A 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-overlay{background:radial-gradient(ellipse at 30% 20%, rgba(255,59,31,0.18) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(232,184,106,0.08) 0%, transparent 40%), linear-gradient(180deg, rgba(5,7,10,0.15) 0%, rgba(5,7,10,0.7) 60%, #05070A 100%)}
+.glow-cta{box-shadow:0 0 30px rgba(255,59,31,0.35), 0 0 60px rgba(255,59,31,0.15), inset 0 1px 0 rgba(255,255,255,0.15)}
+.glow-cta:hover{box-shadow:0 0 40px rgba(255,59,31,0.5), 0 0 80px rgba(255,59,31,0.25)}
+.card-hover{transition:all 0.4s cubic-bezier(0.16,1,0.3,1)}
+.card-hover:hover{transform:translateY(-6px);border-color:rgba(255,59,31,0.35)!important;box-shadow:0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(255,59,31,0.12)}
+.reveal{opacity:0;transform:translateY(24px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.shimmer{position:relative;overflow:hidden}
+.shimmer::after{content:'';position:absolute;top:0;left:-150%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);transform:skewX(-12deg);transition:left 0.7s}
+.shimmer:hover::after{left:150%}
+.noise::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");pointer-events:none;opacity:0.5}
+.timeline-line{background:linear-gradient(90deg,rgba(255,59,31,0.8) 0%, rgba(255,106,0,0.5) 50%, rgba(255,255,255,0.1) 100%)}
+@media(max-width:768px){.timeline-line{background:linear-gradient(180deg,rgba(255,59,31,0.8) 0%, rgba(255,106,0,0.5) 50%, rgba(255,255,255,0.1) 100%)}}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- Scroll Progress -->
+<div id="progress" class="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-[#FF3B1F] to-[#E8B86A] z-[100] transition-all duration-150" style="width:0%"></div>
+
+<!-- Loader -->
+<div id="loader" class="fixed inset-0 z-[99] bg-[#05070A] flex flex-col items-center justify-center transition-opacity duration-700">
+  <div class="flex items-center gap-3 mb-8">
+    <div class="w-10 h-10 bg-gradient-to-br from-[#FF3B1F] to-[#E8B86A] flex items-center justify-center font-display font-black text-white text-lg">FF</div>
+    <div class="text-left">
+      <div class="font-display font-black tracking-widest text-white text-sm leading-none">FREE FIRE</div>
+      <div class="font-display font-black tracking-[0.3em] text-[#FF3B1F] text-[10px]">ACADEMY</div>
+    </div>
+  </div>
+  <div class="w-48 h-[2px] bg-white/10 rounded-full overflow-hidden">
+    <div id="loader-bar" class="h-full bg-gradient-to-r from-[#FF3B1F] to-[#E8B86A] transition-all duration-300" style="width:0%"></div>
+  </div>
+  <p class="text-[10px] tracking-[0.3em] text-white/40 mt-3 font-mono">INITIALIZING ARENA</p>
+</div>
+
+<!-- Navigation -->
+<nav id="navbar" class="fixed top-0 w-full z-40 transition-all duration-500 border-b border-transparent">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8 h-[72px] flex items-center justify-between">
+    <a href="#home" class="flex items-center gap-3">
+      <div class="w-9 h-9 bg-white flex items-center justify-center">
+        <span class="font-display font-black text-black text-[11px] tracking-widest">FF</span>
+      </div>
+      <div class="hidden sm:block">
+        <div class="font-display font-black text-white text-[13px] tracking-[0.14em] leading-none">FREE FIRE ACADEMY</div>
+        <div class="text-[9px] tracking-[0.2em] text-white/50 font-mono">TRAIN HARD • PLAY SMART</div>
+      </div>
+      <div class="sm:hidden font-display font-black text-white text-[13px] tracking-widest">FFA</div>
+    </a>
+
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="#home" class="text-[11px] tracking-[0.18em] font-semibold text-white/80 hover:text-white transition">HOME</a>
+      <a href="#about" class="text-[11px] tracking-[0.18em] font-semibold text-white/60 hover:text-white transition">ABOUT</a>
+      <a href="#training" class="text-[11px] tracking-[0.18em] font-semibold text-white/60 hover:text-white transition">TRAINING</a>
+      <a href="#programs" class="text-[11px] tracking-[0.18em] font-semibold text-white/60 hover:text-white transition">PROGRAMS</a>
+      <a href="#why-us" class="text-[11px] tracking-[0.18em] font-semibold text-white/60 hover:text-white transition">WHY US</a>
+      <a href="#gallery" class="text-[11px] tracking-[0.18em] font-semibold text-white/60 hover:text-white transition">GALLERY</a>
+      <a href="#faq" class="text-[11px] tracking-[0.18em] font-semibold text-white/60 hover:text-white transition">FAQ</a>
+      <a href="#location" class="text-[11px] tracking-[0.18em] font-semibold text-white/60 hover:text-white transition">CONTACT</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="#enquiry" class="hidden md:inline-flex items-center gap-2 bg-[#FF3B1F] hover:bg-[#E8351A] text-white text-[11px] font-bold tracking-[0.14em] px-6 py-[14px] transition glow-cta">
+        JOIN THE ACADEMY <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+      </a>
+      <button id="menu-btn" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 glass rounded-lg">
+        <span class="w-4 h-[2px] bg-white block transition-all" id="bar1"></span>
+        <span class="w-4 h-[2px] bg-white block transition-all" id="bar2"></span>
+        <span class="w-4 h-[2px] bg-white block transition-all" id="bar3"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-white/10 bg-[#0A0C10]/95 backdrop-blur-xl">
+    <div class="px-6 py-6 flex flex-col gap-1">
+      <a href="#home" class="mobile-link py-3 text-sm tracking-widest font-semibold text-white border-b border-white/5">HOME</a>
+      <a href="#about" class="mobile-link py-3 text-sm tracking-widest font-semibold text-white/70 border-b border-white/5">ABOUT</a>
+      <a href="#training" class="mobile-link py-3 text-sm tracking-widest font-semibold text-white/70 border-b border-white/5">TRAINING</a>
+      <a href="#programs" class="mobile-link py-3 text-sm tracking-widest font-semibold text-white/70 border-b border-white/5">PROGRAMS</a>
+      <a href="#why-us" class="mobile-link py-3 text-sm tracking-widest font-semibold text-white/70 border-b border-white/5">WHY US</a>
+      <a href="#gallery" class="mobile-link py-3 text-sm tracking-widest font-semibold text-white/70 border-b border-white/5">GALLERY</a>
+      <a href="#faq" class="mobile-link py-3 text-sm tracking-widest font-semibold text-white/70 border-b border-white/5">FAQ</a>
+      <a href="#location" class="mobile-link py-3 text-sm tracking-widest font-semibold text-white/70 border-b border-white/5">CONTACT</a>
+      <a href="#enquiry" class="mt-4 bg-[#FF3B1F] text-white text-center py-4 text-xs font-bold tracking-widest">JOIN THE ACADEMY</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="relative min-h-[100vh] flex items-center overflow-hidden bg-[#05070A]">
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-50" alt="Esports arena atmospheric">
+    <div class="absolute inset-0 hero-overlay"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#05070A] via-transparent to-transparent"></div>
+  </div>
+  <!-- Particles Canvas -->
+  <canvas id="particles" class="absolute inset-0 w-full h-full pointer-events-none opacity-40"></canvas>
+  
+  <!-- Decorative Grid -->
+  <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+  <div class="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-8 w-full pt-24 pb-12">
+    <div class="grid lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-7">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-3 glass-strong px-4 py-2 rounded-full mb-6 reveal active">
+          <span class="w-2 h-2 bg-[#FF3B1F] rounded-full animate-pulse shadow-[0_0_10px_rgba(255,59,31,0.8)]"></span>
+          <span class="text-[10px] tracking-[0.22em] font-bold text-white/90">ELITE GAMING • STRATEGY • COMPETITIVE TRAINING</span>
+          <span class="hidden sm:inline-flex items-center gap-1 text-[10px] bg-white/10 px-2 py-1 rounded-full text-white/70"><i data-lucide="shield" class="w-3 h-3"></i> VERIFIED ACADEMY</span>
+        </div>
+
+        <h1 class="font-display font-black leading-[0.9] tracking-[-0.02em] reveal active" style="transition-delay:0.1s">
+          <span class="block text-white text-[44px] sm:text-[64px] lg:text-[78px]">FREE FIRE</span>
+          <span class="block text-gradient text-[44px] sm:text-[64px] lg:text-[78px]">ACADEMY</span>
+        </h1>
+
+        <div class="mt-4 reveal active" style="transition-delay:0.2s">
+          <p class="font-raj font-bold text-white text-[22px] sm:text-[28px] tracking-wide leading-none">TURN YOUR GAMEPLAY INTO A SKILL.</p>
+          <p class="text-white/60 text-[14px] sm:text-[15px] leading-relaxed max-w-[520px] mt-3">Structured coaching, smarter strategies and competitive training designed to help you play with confidence. For players who want to move beyond casual.</p>
+        </div>
+
+        <div class="flex flex-wrap gap-3 mt-8 reveal active" style="transition-delay:0.3s">
+          <a href="#enquiry" class="inline-flex items-center gap-3 bg-[#FF3B1F] hover:bg-[#E8351A] text-white px-7 py-4 text-[12px] font-black tracking-[0.14em] glow-cta transition shimmer">
+            JOIN THE ACADEMY <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#training" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 backdrop-blur border border-white/15 text-white px-7 py-4 text-[12px] font-bold tracking-[0.14em] transition">
+            <i data-lucide="play" class="w-4 h-4"></i> EXPLORE TRAINING
+          </a>
+        </div>
+
+        <div class="flex flex-wrap gap-6 mt-8 text-[11px] font-mono tracking-widest text-white/50 reveal active" style="transition-delay:0.4s">
+          <span class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#FF3B1F]"></i> STRUCTURED CURRICULUM</span>
+          <span class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#FF3B1F]"></i> GAMEPLAY REVIEW</span>
+          <span class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#FF3B1F]"></i> COMPETITIVE PREP</span>
+        </div>
+      </div>
+
+      <!-- Right Preview Card -->
+      <div class="lg:col-span-5 hidden lg:block reveal active" style="transition-delay:0.35s">
+        <div class="relative">
+          <div class="absolute -inset-4 bg-gradient-to-br from-[#FF3B1F]/20 to-transparent blur-2xl rounded-3xl"></div>
+          <div class="relative glass-strong rounded-2xl overflow-hidden p-2">
+            <div class="relative rounded-xl overflow-hidden aspect-[4/3] bg-[#0F1216]">
+              <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-90" alt="Coaching session">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+              <!-- Floating UI -->
+              <div class="absolute top-3 left-3 flex items-center gap-2 bg-black/60 backdrop-blur border border-white/10 px-3 py-1.5 rounded-full">
+                <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                <span class="text-[10px] font-bold tracking-widest text-white">LIVE COACHING</span>
+                <span class="text-[10px] text-white/60 font-mono">02:34:18</span>
+              </div>
+              <div class="absolute bottom-3 left-3 right-3">
+                <div class="glass rounded-xl p-3 flex items-center justify-between">
+                  <div>
+                    <div class="text-[10px] tracking-widest text-white/60 font-mono">NEXT SCRIM</div>
+                    <div class="text-sm font-bold text-white">Squad Strategy • 19:30 IST</div>
+                  </div>
+                  <div class="w-9 h-9 bg-[#FF3B1F] flex items-center justify-center"><i data-lucide="users" class="w-4 h-4 text-white"></i></div>
+                </div>
+              </div>
+            </div>
+            <!-- Bottom Stats -->
+            <div class="grid grid-cols-3 gap-2 mt-2">
+              <div class="bg-white/[0.04] border border-white/5 rounded-xl p-3 text-center">
+                <div class="text-[10px] tracking-widest text-white/50 font-mono">FOCUS</div>
+                <div class="text-sm font-bold text-white mt-1">AIM LAB</div>
+                <div class="w-full h-1 bg-white/10 rounded-full mt-2 overflow-hidden"><div class="h-full w-[78%] bg-[#FF3B1F]"></div></div>
+              </div>
+              <div class="bg-white/[0.04] border border-white/5 rounded-xl p-3 text-center">
+                <div class="text-[10px] tracking-widest text-white/50 font-mono">MODE</div>
+                <div class="text-sm font-bold text-white mt-1">TEAM PLAY</div>
+                <div class="w-full h-1 bg-white/10 rounded-full mt-2 overflow-hidden"><div class="h-full w-[65%] bg-[#E8B86A]"></div></div>
+              </div>
+              <div class="bg-white/[0.04] border border-white/5 rounded-xl p-3 text-center">
+                <div class="text-[10px] tracking-widest text-white/50 font-mono">REVIEW</div>
+                <div class="text-sm font-bold text-white mt-1">VOD ANALYSIS</div>
+                <div class="w-full h-1 bg-white/10 rounded-full mt-2 overflow-hidden"><div class="h-full w-[92%] bg-white"></div></div>
+              </div>
+            </div>
+          </div>
+          <!-- Side badge -->
+          <div class="absolute -right-2 top-12 bg-[#E8B86A] text-black px-3 py-2 rotate-3 shadow-xl">
+            <div class="text-[10px] font-black tracking-widest">EST. 2026</div>
+            <div class="text-[9px] font-mono tracking-widest">ELITE DIVISION</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+    <span class="text-[9px] tracking-[0.3em] text-white/50 font-mono">SCROLL</span>
+    <div class="w-[1px] h-10 bg-gradient-to-b from-white/30 to-transparent"></div>
+  </div>
+</section>
+
+<!-- Trust Strip -->
+<div class="relative border-y border-white/10 bg-[#0A0E14]/80 backdrop-blur">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8 py-4 flex flex-wrap items-center justify-between gap-4 text-[11px] font-bold tracking-[0.18em] text-white/70">
+    <span class="flex items-center gap-2"><i data-lucide="crosshair" class="w-4 h-4 text-[#FF3B1F]"></i> PRO TRAINING</span>
+    <span class="hidden sm:block w-1 h-1 bg-white/20 rounded-full"></span>
+    <span class="flex items-center gap-2"><i data-lucide="brain" class="w-4 h-4 text-[#FF3B1F]"></i> STRATEGY DEVELOPMENT</span>
+    <span class="hidden sm:block w-1 h-1 bg-white/20 rounded-full"></span>
+    <span class="flex items-center gap-2"><i data-lucide="eye" class="w-4 h-4 text-[#FF3B1F]"></i> GAMEPLAY ANALYSIS</span>
+    <span class="hidden sm:block w-1 h-1 bg-white/20 rounded-full"></span>
+    <span class="flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 text-[#FF3B1F]"></i> COMPETITIVE MINDSET</span>
+    <span class="hidden lg:flex items-center gap-2 text-[10px] font-mono tracking-widest bg-white/5 border border-white/10 px-3 py-1.5 rounded-full">
+      <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> ADMISSIONS OPEN
+    </span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="py-20 lg:py-28 bg-[#05070A] relative noise">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-[11px] font-mono tracking-[0.25em] text-[#FF3B1F]">01 — ABOUT</span>
+          <span class="h-[1px] w-12 bg-[#FF3B1F]/30"></span>
+        </div>
+        <h2 class="font-display font-black text-white text-[36px] lg:text-[48px] leading-none tracking-tight">
+          MORE THAN <br><span class="text-gradient">JUST GAMING.</span>
+        </h2>
+        <p class="text-white/65 leading-relaxed mt-5 text-[15px] max-w-[520px]">
+          Free Fire Academy is built for players who want to move beyond casual gameplay. Our approach focuses on disciplined practice, smarter decision-making, strategy, teamwork and continuous improvement.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-8">
+          <div class="flex items-center gap-3 glass px-4 py-3 rounded-xl">
+            <span class="w-8 h-8 bg-[#FF3B1F]/15 border border-[#FF3B1F]/20 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-[#FF3B1F]"></i></span>
+            <span class="text-sm font-semibold text-white/90">Structured Practice</span>
+          </div>
+          <div class="flex items-center gap-3 glass px-4 py-3 rounded-xl">
+            <span class="w-8 h-8 bg-[#FF3B1F]/15 border border-[#FF3B1F]/20 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-[#FF3B1F]"></i></span>
+            <span class="text-sm font-semibold text-white/90">Tactical Thinking</span>
+          </div>
+          <div class="flex items-center gap-3 glass px-4 py-3 rounded-xl">
+            <span class="w-8 h-8 bg-[#FF3B1F]/15 border border-[#FF3B1F]/20 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-[#FF3B1F]"></i></span>
+            <span class="text-sm font-semibold text-white/90">Gameplay Review</span>
+          </div>
+          <div class="flex items-center gap-3 glass px-4 py-3 rounded-xl">
+            <span class="w-8 h-8 bg-[#FF3B1F]/15 border border-[#FF3B1F]/20 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-[#FF3B1F]"></i></span>
+            <span class="text-sm font-semibold text-white/90">Team Communication</span>
+          </div>
+          <div class="flex items-center gap-3 glass px-4 py-3 rounded-xl sm:col-span-2">
+            <span class="w-8 h-8 bg-[#FF3B1F]/15 border border-[#FF3B1F]/20 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-[#FF3B1F]"></i></span>
+            <span class="text-sm font-semibold text-white/90">Competitive Preparation</span>
+            <span class="ml-auto text-[10px] tracking-widest bg-[#FF3B1F] text-white px-2 py-1">CORE</span>
+          </div>
+        </div>
+        <a href="#programs" class="inline-flex items-center gap-2 mt-8 border border-white/15 hover:border-white/25 bg-white/5 hover:bg-white/10 text-white px-6 py-3.5 text-[11px] font-bold tracking-[0.16em] transition">
+          DISCOVER OUR APPROACH <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <div class="relative reveal">
+        <div class="relative rounded-2xl overflow-hidden border border-white/10">
+          <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1000&auto=format&fit=crop" class="w-full h-[520px] object-cover" alt="Professional training">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4 glass-strong rounded-xl p-4 flex items-center gap-4">
+            <img src="https://i.ibb.co/21rbDQKV/photo.png" class="w-12 h-12 rounded-full object-cover border-2 border-white/20" alt="Coach">
+            <div class="flex-1">
+              <div class="text-[11px] tracking-widest text-white/60 font-mono">HEAD COACH • STRATEGY</div>
+              <div class="text-white font-bold text-sm">Kakashi Hatake</div>
+              <div class="text-white/50 text-xs">powered by misbah</div>
+            </div>
+            <span class="hidden sm:inline-flex w-8 h-8 bg-white text-black items-center justify-center"><i data-lucide="play" class="w-4 h-4"></i></span>
+          </div>
+        </div>
+        <div class="absolute -bottom-6 -left-4 sm:left-auto sm:-right-4 glass-strong rounded-xl p-4 flex items-center gap-3 shadow-2xl">
+          <div class="w-10 h-10 bg-[#FF3B1F] flex items-center justify-center"><i data-lucide="award" class="w-5 h-5 text-white"></i></div>
+          <div>
+            <div class="text-xs font-black tracking-widest text-white">ACADEMY TRAINING</div>
+            <div class="text-[11px] text-white/60 font-mono">Discipline • Strategy • Review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING -->
+<section id="training" class="py-20 bg-[#070A0F] border-y border-white/5 relative">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-10 reveal">
+      <div>
+        <div class="flex items-center gap-3 mb-3"><span class="text-[11px] font-mono tracking-[0.25em] text-[#FF3B1F]">02 — TRAINING</span><span class="h-[1px] w-12 bg-[#FF3B1F]/30"></span></div>
+        <h2 class="font-display font-black text-white text-[36px] lg:text-[46px] leading-none">TRAIN. <span class="text-white/20">IMPROVE.</span> <span class="text-gradient">DOMINATE.</span></h2>
+      </div>
+      <p class="text-white/55 text-sm max-w-[420px]">Focused modules that turn raw playtime into deliberate, measurable improvement.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- Card 01 -->
+      <div class="glass rounded-2xl p-6 card-hover reveal relative overflow-hidden group">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#FF3B1F]/10 to-transparent blur-2xl"></div>
+        <div class="flex items-center justify-between mb-6">
+          <div class="w-12 h-12 bg-white text-black flex items-center justify-center"><i data-lucide="crosshair" class="w-6 h-6"></i></div>
+          <span class="text-5xl font-display font-black text-white/[0.06] group-hover:text-[#FF3B1F]/10 transition">01</span>
+        </div>
+        <h3 class="font-raj font-bold text-white tracking-wide text-lg leading-none">AIM & PRECISION</h3>
+        <p class="text-white/55 text-sm leading-relaxed mt-3">Improve accuracy, reaction time, crosshair placement and consistency through structured practice routines.</p>
+        <div class="mt-6 flex items-center gap-2 text-[11px] font-bold tracking-widest text-[#FF3B1F]">EXPLORE <i data-lucide="arrow-right" class="w-3 h-3"></i></div>
+      </div>
+      <!-- Card 02 -->
+      <div class="glass rounded-2xl p-6 card-hover reveal relative overflow-hidden group" style="transition-delay:0.08s">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#E8B86A]/10 to-transparent blur-2xl"></div>
+        <div class="flex items-center justify-between mb-6">
+          <div class="w-12 h-12 bg-[#1A1E26] border border-white/10 flex items-center justify-center"><i data-lucide="map" class="w-6 h-6 text-white"></i></div>
+          <span class="text-5xl font-display font-black text-white/[0.06] group-hover:text-[#E8B86A]/10 transition">02</span>
+        </div>
+        <h3 class="font-raj font-bold text-white tracking-wide text-lg leading-none">GAME SENSE</h3>
+        <p class="text-white/55 text-sm leading-relaxed mt-3">Learn rotations, positioning, zone awareness, decision-making and smarter gameplay under pressure.</p>
+        <div class="mt-6 flex items-center gap-2 text-[11px] font-bold tracking-widest text-white/60">EXPLORE <i data-lucide="arrow-right" class="w-3 h-3"></i></div>
+      </div>
+      <!-- Card 03 -->
+      <div class="glass rounded-2xl p-6 card-hover reveal relative overflow-hidden group" style="transition-delay:0.16s">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent blur-2xl"></div>
+        <div class="flex items-center justify-between mb-6">
+          <div class="w-12 h-12 bg-[#1A1E26] border border-white/10 flex items-center justify-center"><i data-lucide="users-2" class="w-6 h-6 text-white"></i></div>
+          <span class="text-5xl font-display font-black text-white/[0.06]">03</span>
+        </div>
+        <h3 class="font-raj font-bold text-white tracking-wide text-lg leading-none">TEAM PLAY</h3>
+        <p class="text-white/55 text-sm leading-relaxed mt-3">Develop communication, coordination, role awareness and squad strategy for cohesive execution.</p>
+        <div class="mt-6 flex items-center gap-2 text-[11px] font-bold tracking-widest text-white/60">EXPLORE <i data-lucide="arrow-right" class="w-3 h-3"></i></div>
+      </div>
+      <!-- Card 04 -->
+      <div class="glass rounded-2xl p-6 card-hover reveal relative overflow-hidden group" style="transition-delay:0.24s">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#FF3B1F]/10 to-transparent blur-2xl"></div>
+        <div class="flex items-center justify-between mb-6">
+          <div class="w-12 h-12 bg-[#1A1E26] border border-white/10 flex items-center justify-center"><i data-lucide="brain-circuit" class="w-6 h-6 text-white"></i></div>
+          <span class="text-5xl font-display font-black text-white/[0.06]">04</span>
+        </div>
+        <h3 class="font-raj font-bold text-white tracking-wide text-lg leading-none">COMPETITIVE MINDSET</h3>
+        <p class="text-white/55 text-sm leading-relaxed mt-3">Build discipline, confidence, focus and the ability to learn from mistakes — every match.</p>
+        <div class="mt-6 flex items-center gap-2 text-[11px] font-bold tracking-widest text-white/60">EXPLORE <i data-lucide="arrow-right" class="w-3 h-3"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs" class="py-20 lg:py-28 bg-[#05070A] relative">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+      <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-[11px] tracking-[0.2em] font-bold text-white/70"><span class="w-2 h-2 bg-[#FF3B1F] rounded-full"></span> 03 — PROGRAMS</div>
+      <h2 class="font-display font-black text-white text-[36px] lg:text-[48px] leading-none mt-4">CHOOSE YOUR <span class="text-gradient">TRAINING PATH</span></h2>
+      <p class="text-white/55 text-sm mt-3">Select the program that matches your current level. All programs emphasise practice, review and consistency — no shortcuts, no false promises.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6">
+      <!-- Foundation -->
+      <div class="glass rounded-2xl p-7 flex flex-col reveal card-hover">
+        <div class="text-[11px] font-mono tracking-[0.2em] text-white/40">PATH 01</div>
+        <h3 class="font-display font-black text-white text-xl tracking-wide mt-1">FOUNDATION</h3>
+        <p class="text-white/50 text-sm mt-1">For players building strong fundamentals.</p>
+        <div class="h-[1px] bg-white/10 my-5"></div>
+        <ul class="space-y-3 text-sm text-white/75 flex-1">
+          <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><i data-lucide="check" class="w-3.5 h-3.5"></i></span> Aim fundamentals</li>
+          <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><i data-lucide="check" class="w-3.5 h-3.5"></i></span> Movement basics</li>
+          <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><i data-lucide="check" class="w-3.5 h-3.5"></i></span> Game awareness</li>
+          <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><i data-lucide="check" class="w-3.5 h-3.5"></i></span> Basic strategy</li>
+          <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><i data-lucide="check" class="w-3.5 h-3.5"></i></span> Practice routines</li>
+        </ul>
+        <a href="#enquiry" class="mt-7 w-full text-center border border-white/15 hover:border-white/25 bg-white/5 hover:bg-white/10 text-white py-3.5 text-[11px] font-bold tracking-[0.16em] transition">LEARN MORE</a>
+        <p class="text-[11px] text-white/30 text-center mt-3 font-mono">Editable content • Update fee & duration</p>
+      </div>
+
+      <!-- Advanced - Featured -->
+      <div class="relative rounded-2xl p-[1px] bg-gradient-to-b from-[#FF3B1F]/50 via-[#E8B86A]/30 to-white/10 reveal" style="transition-delay:0.08s">
+        <div class="bg-[#0F1115] rounded-2xl p-7 flex flex-col h-full relative overflow-hidden">
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#FF3B1F] to-[#E8B86A] text-white text-[10px] font-black tracking-[0.2em] px-4 py-1 rounded-b-lg">MOST POPULAR</div>
+          <div class="text-[11px] font-mono tracking-[0.2em] text-[#FF3B1F] mt-4">PATH 02</div>
+          <h3 class="font-display font-black text-white text-xl tracking-wide mt-1">ADVANCED</h3>
+          <p class="text-white/50 text-sm mt-1">For players who want to seriously improve.</p>
+          <div class="h-[1px] bg-gradient-to-r from-[#FF3B1F]/30 to-transparent my-5"></div>
+          <ul class="space-y-3 text-sm text-white/80 flex-1">
+            <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-[#FF3B1F] flex items-center justify-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white"></i></span> Advanced strategy</li>
+            <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-[#FF3B1F] flex items-center justify-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white"></i></span> Tactical positioning</li>
+            <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-[#FF3B1F] flex items-center justify-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white"></i></span> Team coordination</li>
+            <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-[#FF3B1F] flex items-center justify-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white"></i></span> Gameplay analysis</li>
+            <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-[#FF3B1F] flex items-center justify-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white"></i></span> Competitive drills</li>
+          </ul>
+          <a href="#enquiry" class="mt-7 w-full text-center bg-[#FF3B1F] hover:bg-[#E8351A] text-white py-3.5 text-[11px] font-black tracking-[0.16em] glow-cta transition">LEARN MORE</a>
+          <p class="text-[11px] text-white/30 text-center mt-3 font-mono">Editable content • Update fee & duration</p>
+        </div>
+      </div>
+
+      <!-- Competitive -->
+      <div class="glass rounded-2xl p-7 flex flex-col reveal card-hover" style="transition-delay:0.16s">
+        <div class="text-[11px] font-mono tracking-[0.2em] text-white/40">PATH 03</div>
+        <h3 class="font-display font-black text-white text-xl tracking-wide mt-1">COMPETITIVE</h3>
+        <p class="text-white/50 text-sm mt-1">For players preparing for serious competitive gameplay.</p>
+        <div class="h-[1px] bg-white/10 my-5"></div>
+        <ul class="space-y-3 text-sm text-white/75 flex-1">
+          <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><i data-lucide="check" class="w-3.5 h-3.5"></i></span> Match analysis</li>
+          <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><i data-lucide="check" class="w-3.5 h-3.5"></i></span> Advanced tactics</li>
+          <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><i data-lucide="check" class="w-3.5 h-3.5"></i></span> Team strategy</li>
+          <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><i data-lucide="check" class="w-3.5 h-3.5"></i></span> Scrim preparation</li>
+          <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><i data-lucide="check" class="w-3.5 h-3.5"></i></span> Performance improvement</li>
+        </ul>
+        <a href="#enquiry" class="mt-7 w-full text-center border border-[#E8B86A]/30 hover:border-[#E8B86A]/50 bg-[#E8B86A]/10 hover:bg-[#E8B86A]/15 text-[#E8B86A] py-3.5 text-[11px] font-bold tracking-[0.16em] transition">APPLY NOW</a>
+        <p class="text-[11px] text-white/30 text-center mt-3 font-mono">Selection based on assessment</p>
+      </div>
+    </div>
+
+    <p class="text-center text-[11px] font-mono tracking-widest text-white/30 mt-6">We do not claim guaranteed tournament wins or professional contracts. Progress depends on individual effort and consistency.</p>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why-us" class="py-20 bg-[#070A0F] border-y border-white/5">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <div class="order-2 lg:order-1 reveal">
+        <div class="flex items-center gap-3 mb-3"><span class="text-[11px] font-mono tracking-[0.25em] text-[#FF3B1F]">04 — WHY US</span><span class="h-[1px] w-12 bg-[#FF3B1F]/30"></span></div>
+        <h2 class="font-display font-black text-white text-[30px] lg:text-[42px] leading-[0.95]">WHY PLAY ALONE<br>WHEN YOU CAN<br><span class="text-[#FF3B1F]">TRAIN WITH PURPOSE?</span></h2>
+        <div class="grid sm:grid-cols-2 gap-4 mt-8">
+          <div class="glass rounded-xl p-5">
+            <div class="text-[#FF3B1F] font-mono text-xs font-bold">01 —</div>
+            <div class="font-raj font-bold text-white mt-1">STRUCTURED TRAINING</div>
+            <div class="text-white/55 text-sm mt-2 leading-relaxed">Practice with a clear purpose instead of random grinding.</div>
+          </div>
+          <div class="glass rounded-xl p-5">
+            <div class="text-[#E8B86A] font-mono text-xs font-bold">02 —</div>
+            <div class="font-raj font-bold text-white mt-1">SMARTER GAMEPLAY</div>
+            <div class="text-white/55 text-sm mt-2 leading-relaxed">Understand why decisions work—not just what to do.</div>
+          </div>
+          <div class="glass rounded-xl p-5">
+            <div class="text-white/60 font-mono text-xs font-bold">03 —</div>
+            <div class="font-raj font-bold text-white mt-1">PERSONAL IMPROVEMENT</div>
+            <div class="text-white/55 text-sm mt-2 leading-relaxed">Focus on your strengths and areas that need work.</div>
+          </div>
+          <div class="glass rounded-xl p-5 border-[#FF3B1F]/20 bg-gradient-to-br from-[#FF3B1F]/10 to-transparent">
+            <div class="text-[#FF3B1F] font-mono text-xs font-bold">04 —</div>
+            <div class="font-raj font-bold text-white mt-1">COMPETITIVE DISCIPLINE</div>
+            <div class="text-white/55 text-sm mt-2 leading-relaxed">Develop consistency, focus and teamwork that lasts.</div>
+          </div>
+        </div>
+      </div>
+      <div class="order-1 lg:order-2 relative reveal">
+        <div class="rounded-2xl overflow-hidden border border-white/10 relative aspect-[4/4.5]">
+          <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Team training cinematic">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute top-4 left-4 bg-black/60 backdrop-blur border border-white/10 px-3 py-1.5 rounded-full flex items-center gap-2">
+            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span><span class="text-[10px] font-bold tracking-widest text-white">TEAM SESSION LIVE</span>
+          </div>
+          <div class="absolute bottom-4 left-4 right-4 flex gap-2">
+            <div class="flex-1 glass rounded-xl p-3">
+              <div class="text-[10px] tracking-widest text-white/60 font-mono">COMMUNICATION</div>
+              <div class="text-white font-bold text-sm">CALL-OUTS • ROTATIONS</div>
+              <div class="flex gap-1 mt-2"><span class="flex-1 h-1 bg-[#FF3B1F] rounded-full"></span><span class="flex-1 h-1 bg-[#FF3B1F] rounded-full"></span><span class="flex-1 h-1 bg-white/20 rounded-full"></span></div>
+            </div>
+            <div class="w-24 glass rounded-xl p-3 text-center">
+              <div class="text-[10px] tracking-widest text-white/60 font-mono">SQUAD</div>
+              <div class="text-2xl font-black text-white">4</div>
+              <div class="text-[10px] text-emerald-400 font-bold">READY</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="py-16 bg-[#05070A] border-b border-white/5">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+    <div class="text-center mb-10 reveal">
+      <span class="text-[11px] font-mono tracking-[0.25em] text-white/40">TRAINING PROCESS</span>
+      <h3 class="font-display font-black text-white text-[28px] mt-2">ASSESS → TRAIN → REVIEW → IMPROVE</h3>
+    </div>
+    <div class="grid md:grid-cols-4 gap-6 relative reveal">
+      <!-- desktop line -->
+      <div class="hidden md:block absolute top-[32px] left-[12%] right-[12%] h-[1px] timeline-line opacity-60"></div>
+      <div class="relative glass rounded-2xl p-6 text-center">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-[#FF3B1F] flex items-center justify-center text-white font-display font-black text-xl relative z-10 shadow-[0_0_20px_rgba(255,59,31,0.4)]">01</div>
+        <div class="font-raj font-bold text-white mt-4">ASSESS</div>
+        <div class="text-white/55 text-sm mt-1">Understand the player's current skill level, habits and goals.</div>
+      </div>
+      <div class="relative glass rounded-2xl p-6 text-center">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-[#1A1E26] border border-white/10 flex items-center justify-center text-white font-display font-black text-xl relative z-10">02</div>
+        <div class="font-raj font-bold text-white mt-4">TRAIN</div>
+        <div class="text-white/55 text-sm mt-1">Work on mechanics, strategy and decision-making with drills.</div>
+      </div>
+      <div class="relative glass rounded-2xl p-6 text-center">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-[#1A1E26] border border-white/10 flex items-center justify-center text-white font-display font-black text-xl relative z-10">03</div>
+        <div class="font-raj font-bold text-white mt-4">REVIEW</div>
+        <div class="text-white/55 text-sm mt-1">Analyse gameplay and identify mistakes with coach feedback.</div>
+      </div>
+      <div class="relative glass rounded-2xl p-6 text-center border-[#E8B86A]/20 bg-gradient-to-br from-[#E8B86A]/10 to-transparent">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-[#E8B86A] flex items-center justify-center text-black font-display font-black text-xl relative z-10">04</div>
+        <div class="font-raj font-bold text-white mt-4">IMPROVE</div>
+        <div class="text-white/55 text-sm mt-1">Repeat, refine and become more consistent every session.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="py-20 bg-[#070A0F]">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-8 reveal">
+      <div>
+        <span class="text-[11px] font-mono tracking-[0.25em] text-[#FF3B1F]">05 — GALLERY</span>
+        <h2 class="font-display font-black text-white text-[36px] leading-none mt-2">INSIDE THE <span class="text-[#E8B86A]">ARENA</span></h2>
+      </div>
+      <p class="text-white/50 text-sm max-w-md">Original esports-inspired visuals representing training, competitive gameplay and team atmosphere.</p>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 reveal">
+      <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] lg:aspect-[4/3] border border-white/10">
+        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Training">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80"></div>
+        <div class="absolute bottom-3 left-3 glass px-3 py-1.5 rounded-full text-[11px] font-bold tracking-widest text-white">TRAINING LABS</div>
+      </div>
+      <div class="group relative rounded-2xl overflow-hidden aspect-[3/4] lg:row-span-2 border border-white/10">
+        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Competitive">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 glass px-3 py-1.5 rounded-full text-[11px] font-bold tracking-widest text-white flex items-center gap-2"><span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span> COMPETITIVE PLAY</div>
+      </div>
+      <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Team sessions">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 glass px-3 py-1.5 rounded-full text-[11px] font-bold tracking-widest text-white">TEAM SESSIONS</div>
+      </div>
+      <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10">
+        <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Strategy">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 glass px-3 py-1.5 rounded-full text-[11px] font-bold tracking-widest text-white">STRATEGY ROOM</div>
+      </div>
+      <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] lg:aspect-[16/10] border border-white/10 lg:col-span-1">
+        <img src="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Esports atmosphere">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 glass px-3 py-1.5 rounded-full text-[11px] font-bold tracking-widest text-white">ESPORTS ATMOSPHERE</div>
+      </div>
+      <div class="hidden lg:block group relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10 bg-[#0F1216] flex items-center justify-center">
+        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition duration-700" alt="Setups">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 glass px-3 py-1.5 rounded-full text-[11px] font-bold tracking-widest text-white">GAMING SETUPS</div>
+      </div>
+    </div>
+    <p class="text-[11px] font-mono text-white/30 text-center mt-4">All visuals are original / original-style esports imagery — replace with academy photography when available.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-16 bg-[#05070A] border-y border-white/5">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-8 reveal">
+      <h2 class="font-display font-black text-white text-[26px]">WHAT PLAYERS <span class="text-white/30">SAY</span></h2>
+      <span class="text-[11px] font-mono tracking-widest bg-amber-500/15 border border-amber-500/20 text-amber-300 px-3 py-1.5 rounded-full">EDITABLE CONTENT — REPLACE IN ADMIN</span>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5 reveal">
+      <div class="glass rounded-2xl p-6 border-dashed border-white/15">
+        <div class="flex gap-1 text-amber-400"><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i></div>
+        <p class="text-white/60 italic mt-4 text-sm leading-relaxed">“isse acchi coaching kahi mil hi nahi sakti.
+          ”</p>
+        <div class="flex items-center gap-3 mt-6 pt-4 border-t border-white/5">
+          <div class="w-10 h-10 rounded-full bg-white/10 border border-white/10 flex items-center justify-center"><i data-lucide="user" class="w-5 h-5 text-white/60"></i></div>
+          <div><div class="text-sm font-bold text-white">techno gamers</div><div class="text-xs text-white/40 font-mono">grand master rank</div></div>
+        </div>
+      </div>
+      <div class="rounded-2xl p-[1px] bg-gradient-to-b from-white/10 to-white/5">
+        <div class="bg-[#0F1115] rounded-2xl p-6 border-dashed border border-white/10">
+          <div class="flex gap-1 text-amber-400"><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i></div>
+          <p class="text-white/60 italic mt-4 text-sm leading-relaxed">“agar aaj bhai nahi hote na to me kabhi free fire nahi khel pata.”</p>
+          <div class="flex items-center gap-3 mt-6 pt-4 border-t border-white/5">
+            <div class="w-10 h-10 rounded-full bg-[#FF3B1F]/20 border border-[#FF3B1F]/20 flex items-center justify-center"><i data-lucide="user" class="w-5 h-5 text-[#FF3B1F]"></i></div>
+            <div><div class="text-sm font-bold text-white">ajju bhai</div><div class="text-xs text-white/40 font-mono">elite rank</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="glass rounded-2xl p-6 border-dashed border-white/15">
+        <div class="flex gap-1 text-amber-400"><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i></div>
+        <p class="text-white/60 italic mt-4 text-sm leading-relaxed">“i have not seen this much nice coaching befor love it.
+          ”</p>
+        <div class="flex items-center gap-3 mt-6 pt-4 border-t border-white/5">
+          <div class="w-10 h-10 rounded-full bg-white/10 border border-white/10 flex items-center justify-center"><i data-lucide="user" class="w-5 h-5 text-white/60"></i></div>
+          <div><div class="text-sm font-bold text-white">gaming fleat</div><div class="text-xs text-white/40 font-mono">heroic rank</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-20 bg-[#070A0F]">
+  <div class="max-w-[900px] mx-auto px-6 lg:px-8">
+    <div class="text-center mb-10 reveal">
+      <span class="text-[11px] font-mono tracking-[0.25em] text-[#FF3B1F]">06 — FAQ</span>
+      <h2 class="font-display font-black text-white text-[36px] mt-2">QUESTIONS. <span class="text-white/30">ANSWERED.</span></h2>
+    </div>
+    <div class="space-y-3 reveal" id="faq-list">
+      <!-- FAQ Item Template -->
+      <div class="faq-item glass rounded-2xl overflow-hidden">
+        <button class="faq-btn w-full flex items-center justify-between p-5 sm:p-6 text-left">
+          <span class="font-semibold text-white text-sm sm:text-[15px] pr-4">Who can join Free Fire Academy?</span>
+          <span class="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center shrink-0 transition-transform"><i data-lucide="plus" class="w-4 h-4 faq-icon"></i></span>
+        </button>
+        <div class="faq-answer hidden px-6 pb-6 text-sm leading-relaxed text-white/60">
+          Anyone with a genuine interest in improving their Free Fire gameplay is welcome to enquire. We cater to beginners building fundamentals as well as developing players looking for structured improvement. Specific eligibility for competitive programs is assessed individually.
+        </div>
+      </div>
+      <div class="faq-item glass rounded-2xl overflow-hidden">
+        <button class="faq-btn w-full flex items-center justify-between p-5 sm:p-6 text-left">
+          <span class="font-semibold text-white text-sm sm:text-[15px] pr-4">Do beginners need previous competitive experience?</span>
+          <span class="w-8 h-8 rounded-full bg-white/10 border border-white/15 text-white flex items-center justify-center shrink-0"><i data-lucide="plus" class="w-4 h-4 faq-icon"></i></span>
+        </button>
+        <div class="faq-answer hidden px-6 pb-6 text-sm leading-relaxed text-white/60">
+          No. Our Foundation program is designed for players starting from the basics — covering aim, movement, awareness and practice routines. No prior tournament experience is required.
+        </div>
+      </div>
+      <div class="faq-item glass rounded-2xl overflow-hidden">
+        <button class="faq-btn w-full flex items-center justify-between p-5 sm:p-6 text-left">
+          <span class="font-semibold text-white text-sm sm:text-[15px] pr-4">What does the training include?</span>
+          <span class="w-8 h-8 rounded-full bg-white/10 border border-white/15 text-white flex items-center justify-center shrink-0"><i data-lucide="plus" class="w-4 h-4 faq-icon"></i></span>
+        </button>
+        <div class="faq-answer hidden px-6 pb-6 text-sm leading-relaxed text-white/60">
+          Training combines mechanics practice, strategy sessions, team coordination drills, and guided gameplay review. Sessions focus on deliberate practice rather than unplanned grinding.
+        </div>
+      </div>
+      <div class="faq-item glass rounded-2xl overflow-hidden">
+        <button class="faq-btn w-full flex items-center justify-between p-5 sm:p-6 text-left">
+          <span class="font-semibold text-white text-sm sm:text-[15px] pr-4">Is gameplay analysis included?</span>
+          <span class="w-8 h-8 rounded-full bg-white/10 border border-white/15 text-white flex items-center justify-center shrink-0"><i data-lucide="plus" class="w-4 h-4 faq-icon"></i></span>
+        </button>
+        <div class="faq-answer hidden px-6 pb-6 text-sm leading-relaxed text-white/60">
+          Yes. Gameplay review is a core part of our method — analysing decision-making, positioning and mistakes to create personalised improvement points.
+        </div>
+      </div>
+      <div class="faq-item glass rounded-2xl overflow-hidden">
+        <button class="faq-btn w-full flex items-center justify-between p-5 sm:p-6 text-left">
+          <span class="font-semibold text-white text-sm sm:text-[15px] pr-4">How can I enquire about admission?</span>
+          <span class="w-8 h-8 rounded-full bg-white/10 border border-white/15 text-white flex items-center justify-center shrink-0"><i data-lucide="plus" class="w-4 h-4 faq-icon"></i></span>
+        </button>
+        <div class="faq-answer hidden px-6 pb-6 text-sm leading-relaxed text-white/60">
+          Use the enquiry form on this website or visit the academy via the Get Directions button. Our team will respond with program details and next steps.
+        </div>
+      </div>
+      <div class="faq-item glass rounded-2xl overflow-hidden">
+        <button class="faq-btn w-full flex items-center justify-between p-5 sm:p-6 text-left">
+          <span class="font-semibold text-white text-sm sm:text-[15px] pr-4">Where is Free Fire Academy located?</span>
+          <span class="w-8 h-8 rounded-full bg-white/10 border border-white/15 text-white flex items-center justify-center shrink-0"><i data-lucide="plus" class="w-4 h-4 faq-icon"></i></span>
+        </button>
+        <div class="faq-answer hidden px-6 pb-6 text-sm leading-relaxed text-white/60">
+          Find us via the exact Google Maps location provided. Tap “Get Directions” to open navigation directly. Address details will be updated once verified.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location" class="py-20 bg-[#05070A] border-y border-white/5">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+      <div class="reveal">
+        <span class="text-[11px] font-mono tracking-[0.25em] text-[#FF3B1F]">07 — LOCATION</span>
+        <h2 class="font-display font-black text-white text-[36px] lg:text-[44px] leading-none mt-2">FIND THE <span class="text-gradient">ACADEMY</span></h2>
+        <p class="text-white/55 text-sm mt-3 max-w-lg">Visit us for a tour or enquiry. Use the exact Google Maps location provided by the academy for accurate navigation.</p>
+
+        <div class="glass rounded-2xl p-6 mt-6">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-[#FF3B1F] flex items-center justify-center shrink-0"><i data-lucide="map-pin" class="w-6 h-6 text-white"></i></div>
+            <div>
+              <div class="font-display font-black tracking-widest text-white text-sm">FREE FIRE ACADEMY</div>
+              <div class="text-white/60 text-sm mt-1">Location available via Google Maps • Tap Get Directions for live navigation.</div>
+              <div class="text-[11px] font-mono text-white/30 mt-2">Exact address: To be updated once verified — do not display invented details.</div>
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3 mt-6">
+            <a href="https://maps.app.goo.gl/vWuM1prWdmkLokWU7" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-[#FF3B1F] hover:bg-[#E8351A] text-white py-3.5 text-[11px] font-black tracking-[0.12em] glow-cta transition">
+              <i data-lucide="navigation" class="w-4 h-4"></i> GET DIRECTIONS
+            </a>
+            <a href="#enquiry" class="inline-flex items-center justify-center gap-2 bg-white text-black hover:bg-white/90 py-3.5 text-[11px] font-black tracking-[0.12em] transition">
+              <i data-lucide="mail" class="w-4 h-4"></i> CONTACT THE ACADEMY
+            </a>
+          </div>
+          <div class="flex flex-wrap gap-4 mt-4 text-[11px] font-mono text-white/40">
+            <span class="flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5"></i> [Add phone — editable]</span>
+            <span class="flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5"></i> [Add email — editable]</span>
+          </div>
+        </div>
+
+        <div class="flex gap-3 mt-4">
+          <div class="flex-1 glass rounded-xl p-4 flex items-center gap-3">
+            <i data-lucide="clock" class="w-5 h-5 text-[#FF3B1F]"></i>
+            <div><div class="text-xs font-bold text-white tracking-widest">VISITING HOURS</div><div class="text-xs text-white/50 font-mono">[Add hours — editable]</div></div>
+          </div>
+          <div class="flex-1 glass rounded-xl p-4 flex items-center gap-3">
+            <i data-lucide="shield-check" class="w-5 h-5 text-emerald-400"></i>
+            <div><div class="text-xs font-bold text-white tracking-widest">VERIFIED LOCATION</div><div class="text-xs text-white/50 font-mono">Google Maps linked</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-[#0A0E14] min-h-[420px] reveal">
+        <!-- Map Preview -->
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.0!2d75.8!3d26.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDU0JzAwLjAiTiA3NcKwNDgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1700000000000"
+          class="absolute inset-0 w-full h-full border-0 grayscale invert-[0.9] contrast-125 opacity-80"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Free Fire Academy Location"></iframe>
+        <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+        <div class="absolute top-4 left-4 bg-white text-black px-3 py-2 flex items-center gap-2 shadow-xl">
+          <div class="w-8 h-8 bg-[#FF3B1F] flex items-center justify-center"><i data-lucide="map-pin" class="w-4 h-4 text-white"></i></div>
+          <div><div class="text-xs font-black tracking-widest leading-none">FREE FIRE ACADEMY</div><div class="text-[10px] font-mono text-black/60">Tap to open in Google Maps</div></div>
+        </div>
+        <a href="https://maps.app.goo.gl/vWuM1prWdmkLokWU7" target="_blank" rel="noopener" class="absolute bottom-4 left-4 right-4 bg-[#0A0E14]/90 backdrop-blur border border-white/15 text-white flex items-center justify-between px-4 py-3 hover:bg-[#0A0E14] transition">
+          <span class="text-xs font-bold tracking-widest flex items-center gap-2"><i data-lucide="external-link" class="w-4 h-4"></i> OPEN IN GOOGLE MAPS</span>
+          <span class="w-8 h-8 bg-[#FF3B1F] flex items-center justify-center"><i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENQUIRY -->
+<section id="enquiry" class="py-20 lg:py-28 relative overflow-hidden bg-[#070A0F]">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-20" alt="">
+    <div class="absolute inset-0 bg-gradient-to-t from-[#070A0F] via-[#070A0F]/70 to-[#070A0F]/90"></div>
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,59,31,0.3) 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+  <div class="relative max-w-[1120px] mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-5 gap-8 items-start">
+      <div class="lg:col-span-2 reveal">
+        <span class="inline-flex items-center gap-2 glass px-3 py-1.5 rounded-full text-[11px] font-bold tracking-[0.18em] text-white/80"><span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> ENQUIRY OPEN</span>
+        <h2 class="font-display font-black text-white text-[40px] lg:text-[52px] leading-[0.9] mt-4">READY TO<br><span class="text-gradient">LEVEL UP?</span></h2>
+        <p class="text-white/60 text-sm mt-4 leading-relaxed">Your next level starts with better training. Fill the form and our team will get back with program details. No spam — only enquiry response.</p>
+        <div class="mt-6 space-y-3">
+          <div class="flex items-center gap-3 text-sm text-white/70"><span class="w-8 h-8 rounded-full bg-[#FF3B1F]/15 border border-[#FF3B1F]/20 flex items-center justify-center"><i data-lucide="shield" class="w-4 h-4 text-[#FF3B1F]"></i></span> Verified academy • Structured curriculum</div>
+          <div class="flex items-center gap-3 text-sm text-white/70"><span class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center"><i data-lucide="clock" class="w-4 h-4"></i></span> Response within 24 hours (editable)</div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-3 reveal">
+        <form id="enquiry-form" action="https://formspree.io/f/mgavoyqe" method="POST" class="glass-strong rounded-2xl p-6 sm:p-8">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="text-[11px] font-bold tracking-[0.14em] text-white/70">FULL NAME *</label>
+              <input name="name" required placeholder="Enter your full name" class="mt-2 w-full bg-white/[0.06] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#FF3B1F]/50 focus:bg-white/[0.08] transition">
+              <p class="hidden text-xs text-red-400 mt-1 error-msg">Please enter your name</p>
+            </div>
+            <div>
+              <label class="text-[11px] font-bold tracking-[0.14em] text-white/70">AGE *</label>
+              <input name="age" type="number" min="10" max="50" required placeholder="e.g. 18" class="mt-2 w-full bg-white/[0.06] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#FF3B1F]/50 transition">
+              <p class="hidden text-xs text-red-400 mt-1 error-msg">Enter a valid age</p>
+            </div>
+            <div>
+              <label class="text-[11px] font-bold tracking-[0.14em] text-white/70">PHONE NUMBER *</label>
+              <input name="phone" type="tel" required pattern="[0-9+\-\s]{8,15}" placeholder="+91 00000 00000" class="mt-2 w-full bg-white/[0.06] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#FF3B1F]/50 transition">
+              <p class="hidden text-xs text-red-400 mt-1 error-msg">Enter a valid phone number</p>
+            </div>
+            <div>
+              <label class="text-[11px] font-bold tracking-[0.14em] text-white/70">CURRENT SKILL LEVEL</label>
+              <select name="skill" class="mt-2 w-full bg-[#1A1E26] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-[#FF3B1F]/50 transition">
+                <option value="">Select level</option>
+                <option>Beginner — Casual</option>
+                <option>Intermediate — Ranked</option>
+                <option>Advanced — Competitive</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2">
+              <label class="text-[11px] font-bold tracking-[0.14em] text-white/70">PREFERRED TRAINING PROGRAM</label>
+              <select name="program" class="mt-2 w-full bg-[#1A1E26] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-[#FF3B1F]/50 transition">
+                <option value="">Select program</option>
+                <option>Foundation</option>
+                <option>Advanced</option>
+                <option>Competitive — Assessment Required</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2">
+              <label class="text-[11px] font-bold tracking-[0.14em] text-white/70">MESSAGE</label>
+              <textarea name="message" rows="4" placeholder="Tell us about your goals, current rank or what you want to improve..." class="mt-2 w-full bg-white/[0.06] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#FF3B1F]/50 transition resize-none"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="w-full mt-6 bg-[#FF3B1F] hover:bg-[#E8351A] text-white py-4 text-[12px] font-black tracking-[0.16em] glow-cta transition flex items-center justify-center gap-2">
+            SUBMIT ENQUIRY <i data-lucide="send" class="w-4 h-4"></i>
+          </button>
+          <p class="text-[11px] text-white/35 text-center mt-3 font-mono">Your information is used only to respond to your enquiry. We don’t share your data.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#05070A] border-t border-white/10 pt-12 pb-8">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white flex items-center justify-center"><span class="font-display font-black text-black text-xs tracking-widest">FF</span></div>
+          <div>
+            <div class="font-display font-black text-white tracking-widest text-sm">FREE FIRE ACADEMY</div>
+            <div class="text-[11px] tracking-[0.18em] text-white/50 font-mono">TRAIN HARD. PLAY SMART. BECOME ELITE.</div>
+          </div>
+        </div>
+        <p class="text-white/50 text-sm mt-4 max-w-md leading-relaxed">A premium esports coaching institute focused on structured practice, smarter strategies and competitive preparation.</p>
+        <div class="flex gap-2 mt-5">
+          <a href="#" class="w-9 h-9 glass flex items-center justify-center hover:bg-white/10 transition" aria-label="Instagram"><i data-lucide="instagram" class="w-4 h-4 text-white"></i></a>
+          <a href="#" class="w-9 h-9 glass flex items-center justify-center hover:bg-white/10 transition" aria-label="YouTube"><i data-lucide="youtube" class="w-4 h-4 text-white"></i></a>
+          <a href="https://maps.app.goo.gl/vWuM1prWdmkLokWU7" target="_blank" class="w-9 h-9 glass flex items-center justify-center hover:bg-white/10 transition" aria-label="Maps"><i data-lucide="map-pin" class="w-4 h-4 text-white"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="text-xs font-black tracking-[0.18em] text-white">EXPLORE</div>
+        <div class="mt-4 flex flex-col gap-2 text-sm text-white/60">
+          <a href="#home" class="hover:text-white transition">Home</a>
+          <a href="#about" class="hover:text-white transition">About</a>
+          <a href="#training" class="hover:text-white transition">Training</a>
+          <a href="#programs" class="hover:text-white transition">Programs</a>
+          <a href="#faq" class="hover:text-white transition">FAQ</a>
+          <a href="#location" class="hover:text-white transition">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="text-xs font-black tracking-[0.18em] text-white">ACADEMY</div>
+        <div class="mt-4 text-sm text-white/60 leading-relaxed">
+          <div class="text-white font-semibold">FREE FIRE ACADEMY</div>
+          <div class="mt-1">Location via Google Maps</div>
+          <a href="https://maps.app.goo.gl/vWuM1prWdmkLokWU7" target="_blank" class="inline-flex items-center gap-1 text-[#FF3B1F] hover:text-[#FF6A00] mt-2 text-sm font-semibold">Get Directions <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></a>
+          <div class="mt-3 text-xs font-mono text-white/35">[Phone — editable]</div>
+          <div class="text-xs font-mono text-white/35">[Email — editable]</div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-white/30">
+      <span>© 2026 Free Fire Academy. All rights reserved.</span>
+      <span class="flex gap-4"><a href="#" class="hover:text-white/60">Privacy Policy</a> <a href="#" class="hover:text-white/60">Terms & Conditions</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden">
+  <div class="glass-strong rounded-2xl px-6 py-4 flex items-center gap-3 shadow-2xl border border-emerald-500/20">
+    <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-white"></i></span>
+    <div>
+      <div class="text-white font-bold text-sm">Enquiry submitted</div>
+      <div class="text-white/60 text-xs font-mono">We’ll respond to your enquiry soon. This is a demo — no data was sent.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+lucide.createIcons();
+
+// Loader
+let lb=0;
+const bar=document.getElementById('loader-bar');
+const loader=document.getElementById('loader');
+const iv=setInterval(()=>{
+  lb+=Math.random()*25;
+  if(lb>=100){lb=100;clearInterval(iv);bar.style.width='100%';setTimeout(()=>{loader.style.opacity='0';setTimeout(()=>loader.remove(),700)},400)}
+  bar.style.width=lb+'%';
+},120);
+
+// Navbar scroll
+const navbar=document.getElementById('navbar');
+const progress=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  if(y>20){navbar.classList.add('bg-[#05070A]/80','backdrop-blur-xl','border-white/10');navbar.classList.remove('border-transparent')} else {navbar.classList.remove('bg-[#05070A]/80','backdrop-blur-xl','border-white/10');navbar.classList.add('border-transparent')}
+  const docH=document.documentElement.scrollHeight-window.innerHeight;
+  progress.style.width=(y/docH*100)+'%';
+});
+
+// Mobile menu
+const btn=document.getElementById('menu-btn');
+const menu=document.getElementById('mobile-menu');
+let open=false;
+btn.addEventListener('click',()=>{
+  open=!open;menu.classList.toggle('hidden',!open);
+  document.getElementById('bar1').style.transform=open?'rotate(45deg) translate(4px,5px)':'';
+  document.getElementById('bar2').style.opacity=open?'0':'1';
+  document.getElementById('bar3').style.transform=open?'rotate(-45deg) translate(4px,-5px)':'';
+});
+document.querySelectorAll('.mobile-link').forEach(a=>a.addEventListener('click',()=>{open=false;menu.classList.add('hidden');document.getElementById('bar1').style.transform='';document.getElementById('bar2').style.opacity='1';document.getElementById('bar3').style.transform='';}));
+
+// Particles
+const cvs=document.getElementById('particles');
+const ctx=cvs.getContext('2d');
+function resize(){cvs.width=cvs.offsetWidth*window.devicePixelRatio;cvs.height=cvs.offsetHeight*window.devicePixelRatio;ctx.scale(window.devicePixelRatio,window.devicePixelRatio)}
+let particles=[];
+function initP(){
+  const w=cvs.offsetWidth,h=cvs.offsetHeight;
+  particles=Array.from({length:60},()=>({
+    x:Math.random()*w,y:Math.random()*h,
+    vx:(Math.random()-0.5)*0.4,vy:(Math.random()-0.5)*0.4,
+    r:Math.random()*1.5+0.3, a:Math.random()*0.5+0.2
+  }))
+}
+function anim(){
+  const w=cvs.offsetWidth,h=cvs.offsetHeight;
+  ctx.clearRect(0,0,w,h);
+  particles.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0||p.x>w) p.vx*=-1;
+    if(p.y<0||p.y>h) p.vy*=-1;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,59,31,${p.a})`;ctx.fill();
+    // glow
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r*3,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,59,31,${p.a*0.08})`;ctx.fill();
+  });
+  // connections
+  ctx.strokeStyle='rgba(255,59,31,0.06)';
+  ctx.lineWidth=0.5;
+  for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){
+    const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.hypot(dx,dy);
+    if(d<120){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.globalAlpha=1-d/120;ctx.stroke();ctx.globalAlpha=1}
+  }
+  requestAnimationFrame(anim);
+}
+resize();initP();anim();
+window.addEventListener('resize',()=>{resize();initP()});
+
+// Reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active')})
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
+    const ans=item.querySelector('.faq-answer');
+    const icon=btn.querySelector('.faq-icon');
+    const isOpen=!ans.classList.contains('hidden');
+    document.querySelectorAll('.faq-answer').forEach(a=>a.classList.add('hidden'));
+    document.querySelectorAll('.faq-icon').forEach(i=>{i.setAttribute('data-lucide','plus');});
+    document.querySelectorAll('.faq-btn span:last-child').forEach(s=>{s.className='w-8 h-8 rounded-full bg-white/10 border border-white/15 text-white flex items-center justify-center shrink-0';});
+    if(!isOpen){
+      ans.classList.remove('hidden');
+      icon.setAttribute('data-lucide','minus');
+      btn.querySelector('span:last-child').className='w-8 h-8 rounded-full bg-white text-black flex items-center justify-center shrink-0';
+    }
+    lucide.createIcons();
+  });
+});
+// open first
+document.querySelector('.faq-answer')?.classList.remove('hidden');
+document.querySelector('.faq-btn span:last-child')?.classList.remove('bg-white/10');
+document.querySelector('.faq-btn span:last-child')?.classList.add('bg-white','text-black');
+document.querySelector('.faq-icon')?.setAttribute('data-lucide','minus');
+lucide.createIcons();
+
+// Smooth anchor offset for fixed nav
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');
+    if(id.length>1){
+      const el=document.querySelector(id);
+      if(el){e.preventDefault(); window.scrollTo({top:el.offsetTop-72, behavior:'smooth'})}
+    }
+  });
+});
+</script>
+</body>
+</html>
